@@ -1,0 +1,14 @@
+<html>
+ <body>
+ An online request comment was received from:<br/>
+ Name : <?php echo e($name); ?><br/>
+ Email : <?php echo e($email); ?><br/>
+ Address : <?php echo e($address); ?><br/>
+ Phone : <?php echo e($phone); ?><br/>
+ Company : <?php echo e($company); ?><br/>
+
+<br/>
+  Comment : <?php echo e($comment); ?>
+
+ </body>
+ </html>

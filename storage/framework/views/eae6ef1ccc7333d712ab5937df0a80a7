@@ -1,0 +1,248 @@
+
+
+<?php $__env->startSection('header_styles'); ?>
+<link href="<?php echo e(asset('assets/vendors/datatables/css/dataTables.bootstrap.css')); ?>" rel="stylesheet" type="text/css" />
+<style>
+    .form-horizontal .form-group .col-sm-10 input{width:80%;}
+    #menu li.active1>a {
+        background: #181b1f;
+        color: #fff;}
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <i class="fa fa-fw fa-crosshairs"></i>
+                            Customer Search
+                        </h3>
+                        <span class="pull-right">
+                            <i class="fa fa-fw fa-times removepanel clickable"></i>
+                            <i class="fa fa-fw fa-chevron-up clickable"></i>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal row" role="form" method="get" action="<?php echo URL::route('admin.backend'); ?>" id="search_form">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="CustomerID : " id="customer_id" name="customer_id">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="Company : " id="company" name="company">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-warning cus-search" type="submit">Search</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                 <div class="input-group mar-left">
+                                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+
+                                 </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php if(isset($users)): ?>
+            <?php if(count($users) > 1): ?>
+              <div class="col-md-12">
+                 <div class="panel panel-primary">
+                     <div class="panel-body">
+                         <form class="form-horizontal row" role="form">
+                             <?php foreach($users as $company): ?>
+                                <a data-id="<?php echo e($company->ID); ?>" data-name="<?php echo $company->COMPANY; ?>" class="company_button btn btn-success"><?php echo $company->COMPANY; ?></a>
+                             <?php endforeach; ?>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+            <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if(isset($users)): ?>
+            <?php if(count($users) == 1): ?>
+            <?php foreach($users as $user): ?>
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <form class="form-horizontal row" role="form">
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ID:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->ID; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">COMPANY:</label>
+                                <div class="col-sm-10">
+
+                                     <label for="input-text" class="control-label"><?php echo $user->COMPANY; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ADDRESS:</label>
+                                <div class="col-sm-10">
+                                     <label for="input-text" class="control-label"><?php echo $user->ADDRESS; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">CITY:</label>
+                                <div class="col-sm-10">
+                                     <label for="input-text" class="control-label"><?php echo $user->CITY; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">STATE:</label>
+                                <div class="col-sm-10">
+                                     <label for="input-text" class="control-label"><?php echo $user->STATE; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ZIP:</label>
+                                <div class="col-sm-10">
+                                     <label for="input-text" class="control-label"><?php echo $user->ZIP; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ADMIN:</label>
+                                <div class="col-sm-10">
+                                    <label class="control-label"><?php echo $user->ADMIN; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">PHONE:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->PHONE; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">FAX:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->FAX; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">EMAIL:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->EMAIL; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">SSN/EIN:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->SSN_EIN; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT NAME:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->ITNAME; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT PHONE:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->ITPHONE; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT FAX:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->ITFAX; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT EMAIL:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->ITEMAIL; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">AGENT:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->AGENT; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">RATE:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $user->RATE; ?></label>
+                                </div>
+                            </div>
+                            <?php if(isset($infos)): ?>
+                            <?php foreach($infos as $info): ?>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">UID:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $info->uid; ?></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">PASSWORD:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label"><?php echo $info->pwd; ?></label>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ANI:</label>
+                                <div class="col-sm-10">
+                                    <label for="input-text" class="control-label" style="text-align: left;">
+                                    <?php foreach($masters as $key => $master): ?>
+                                    <?php echo $key == 0 ? '' : ','; ?>
+
+                                    <?php echo $master->ANI; ?>
+
+                                    <?php endforeach; ?>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <?php endif; ?>
+        </div>
+
+        <!--main content ends-->
+    </section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer_scripts'); ?>
+<script type="text/javascript" src="<?php echo e(asset('assets/vendors/datatables/js/jquery.dataTables.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('assets/vendors/datatables/js/dataTables.bootstrap.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/custom_js/datatables.js')); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    <?php if(isset($alert)): ?>
+    $(document).ready(function() {
+        alert('<?php echo e($alert['msg']); ?>');
+    });
+    <?php endif; ?>
+    $(document).ready(function() {
+       $('.company_button').click(function(){
+
+            var companyName = $(this).attr('data-name');
+            var companyId = $(this).attr('data-id');
+
+            $('input#customer_id').val(companyId);
+            $('form#search_form').submit();
+        });
+
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

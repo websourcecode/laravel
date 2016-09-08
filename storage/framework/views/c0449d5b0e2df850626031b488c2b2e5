@@ -1,0 +1,309 @@
+<?php $__env->startSection('header_styles'); ?>
+<link href="<?php echo e(asset('assets/vendors/datatables/css/dataTables.bootstrap.css')); ?>" rel="stylesheet" type="text/css" />
+<style>
+    .form-horizontal .form-group .col-sm-10 input{width:80%;}
+    .form-horizontal .form-group .col-sm-10 select{width:80%;}
+    #menu li.active2>a {
+            background: #181b1f;
+            color: #fff;}
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <i class="fa fa-fw fa-crosshairs"></i>
+                            Customer Search
+                        </h3>
+                        <span class="pull-right">
+                            <i class="fa fa-fw fa-times removepanel clickable"></i>
+                            <i class="fa fa-fw fa-chevron-up clickable"></i>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal row" role="form" method="get" action="<?php echo URL::route('admin.modify'); ?>" id="search_form">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="CustomerID : " id="customer_id" name="customer_id">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="Company : " id="company" name="company">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-warning cus-search" type="submit">Search</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                 <div class="input-group mar-left">
+                                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+
+                                 </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php if(isset($users)): ?>
+            <?php if(count($users) > 1): ?>
+              <div class="col-md-12">
+                 <div class="panel panel-primary">
+                     <div class="panel-body">
+                         <form class="form-horizontal row" role="form">
+                             <?php foreach($users as $company): ?>
+                                <a data-id="<?php echo e($company->ID); ?>" data-name="<?php echo $company->COMPANY; ?>" class="company_button btn btn-success"><?php echo $company->COMPANY; ?></a>
+
+				<br />
+                             <?php endforeach; ?>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+            <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if(isset($users)): ?>
+            <?php if(count($users) == 1): ?>
+            <?php foreach($users as $user): ?>
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <form class="form-horizontal row" role="form">
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ID:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="id" value="<?php echo $user->ID; ?>" readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">COMPANY:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="company1" value="<?php echo $user->COMPANY; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ADDRESS:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="address" value="<?php echo $user->ADDRESS; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">CITY:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="city" value="<?php echo $user->CITY; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">STATE:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="state" value="<?php echo $user->STATE; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ZIP:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="zip" value="<?php echo $user->ZIP; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ADMIN:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="admin" value="<?php echo $user->ADMIN; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">PHONE:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="phone" value="<?php echo $user->PHONE; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">FAX:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="fax" value="<?php echo $user->FAX; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">EMAIL:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="email" value="<?php echo $user->EMAIL; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">SSN/EIN:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="ssn_ein" value="<?php echo $user->SSN_EIN; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT NAME:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="itname" value="<?php echo $user->ITNAME; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT PHONE:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="itphone" value="<?php echo $user->ITPHONE; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT FAX:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="itfax" value="<?php echo $user->ITFAX; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">IT EMAIL:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="itemail" value="<?php echo $user->ITEMAIL; ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">AGENT:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="agent" value="<?php echo $user->AGENT; ?>" readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">RATE:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="rate" id="rate">
+                                        <?php for($i = 0; $i < 76; $i = $i+5): ?>
+                                        <option value="<?php echo e($i); ?>%"><?php echo e($i); ?>%</option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <?php if(isset($infos)): ?>
+                            <?php foreach($infos as $info): ?>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">UID:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="uid" value="<?php echo $info->uid; ?>" readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">PASSWORD:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="password" value="<?php echo $info->pwd; ?>" readonly="readonly" />
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            <div class="form-group">
+                                <label for="input-text" class="col-sm-2 control-label">ANI:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="ani" value="<?php echo $user->ANI; ?>"/>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <a id="change_cus" class="btn btn-success">change</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <?php endif; ?>
+        </div>
+
+        <!--main content ends-->
+    </section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer_scripts'); ?>
+<script type="text/javascript" src="<?php echo e(asset('assets/vendors/datatables/js/jquery.dataTables.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('assets/vendors/datatables/js/dataTables.bootstrap.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/custom_js/datatables.js')); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    <?php if(isset($alert)): ?>
+    $(document).ready(function() {
+        alert('<?php echo e($alert['msg']); ?>');
+    });
+    <?php endif; ?>
+    <?php if(isset($user)): ?>
+    $(document).ready(function() {
+        document.getElementById("rate").value = "<?php echo $user->RATE; ?>";
+    });
+    <?php endif; ?>
+
+    $(document).ready(function() {
+
+       $('.company_button').click(function(){
+
+            var companyName = $(this).attr('data-name');
+            var companyId = $(this).attr('data-id');
+
+            $('input#customer_id').val(companyId);
+            $('form#search_form').submit();
+        });
+        $('a#change_cus').click(function(){
+
+            var id = document.getElementById("id").value;
+            var company = document.getElementById("company1").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var zip = document.getElementById("zip").value;
+            var admin = document.getElementById("admin").value;
+            var phone = document.getElementById("phone").value;
+            var fax = document.getElementById("fax").value;
+            var email = document.getElementById("email").value;
+            var ssn_ein = document.getElementById("ssn_ein").value;
+            var itname = document.getElementById("itname").value;
+            var itphone = document.getElementById("itphone").value;
+            var itfax = document.getElementById("itfax").value;
+            var itemail = document.getElementById("itemail").value;
+            var agent = document.getElementById("agent").value;
+            var rate = document.getElementById("rate").value;
+            var uid = document.getElementById("uid").value;
+            var password = document.getElementById("password").value;
+            var ani = document.getElementById("ani").value;
+
+            $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+              url: '<?php echo URL::route("cus.update"); ?>',
+              type: "post",
+              data: {'id':id,
+                        'company':company,
+                        'address':address,
+                        'city':city,
+                        'state':state,
+                        'zip':zip,
+                        'admin':admin,
+                        'phone':phone,
+                        'fax':fax,
+                        'email':email,
+                        'ssn_ein':ssn_ein,
+                        'itname':itname,
+                        'itphone':itphone,
+                        'itfax':itfax,
+                        'itemail':itemail,
+                        'agent':agent,
+                        'rate':rate,
+                        'uid':uid,
+                        'password':password,
+                        'ani':ani
+                        },
+              success: function(data){
+                alert(data.msg);
+              }
+            });
+          });
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
